@@ -29,9 +29,9 @@ gender = st.text_input("What is your gender preference for a name?","Male or fem
 	
 
 ##Importing data
-ipa_cv = pd.read_csv('https://github.com/jerman7/clbng_webapp/phenome_consonants_vowels_new_edited.csv')
-df3 = pd.read_csv('https://github.com/jerman7/clbng_webapp/df3.csv')
-ipa_cv_doubles = pd.read_csv('https://github.com/jerman7/clbng_webapp/phenome_consonants_vowels_new_edited.csv')
+ipa_cv = pd.read_csv('/home/ubuntu/webapp/phenome_consonants_vowels_new_edited.csv')
+df3 = pd.read_csv('/home/ubuntu/webapp/df3.csv')
+ipa_cv_doubles = pd.read_csv('/home/ubuntu/webapp/phenome_consonants_vowels_new_edited.csv')
 
 epi_turkish = epitran.Epitran('tur-Latn') 
 epi_spanish = epitran.Epitran('spa-Latn')
@@ -159,8 +159,8 @@ def function(firstname, language1, language2, gender):
                 dataframe.at[i,p] = 1  # set corresponding columns to 1    
         dataframe = dataframe.set_index('Name') 
         dataframe = dataframe.drop(columns=['new_column', 'new_new_column'])
-        clusterer = pickle.load(open('https://github.com/jerman7/clbng_webapp/finalized_model.sav', 'rb'))
-        cluster_labels = pickle.load(open('https://github.com/jerman7/clbng_webapp/finalized_labels.sav', 'rb'))
+        clusterer = pickle.load(open('/home/ubuntu/webapp/finalized_model.sav', 'rb'))
+        cluster_labels = pickle.load(open('/home/ubuntu/webapp/finalized_labels.sav', 'rb'))
         cluster = clusterer.predict(dataframe)
         clusterprint = df3.loc[cluster_labels==cluster]
         clusterprint_L1 = clusterprint[(clusterprint['Language']==str(language1).title())]
