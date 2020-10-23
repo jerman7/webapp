@@ -1,0 +1,4 @@
+Host phonnamematcher
+	HostName Your_IP
+	User ec2-user
+	IdentityFile /home/path/to/your_keypair.pem
