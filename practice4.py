@@ -1,6 +1,6 @@
 from timeit import default_timer as timer
 
-start = timer()
+#start = timer()
 
 ##IMPORT PACKAGES
 import streamlit as st
@@ -102,7 +102,7 @@ df4 = df4.drop(columns=['new_column', 'new_new_column', 'Gender', 'Language'])
 
 
 
-def function(firstname, language1, language2, gender):
+def phonnamematcher(firstname, language1, language2, gender):
 
     lang_dict = {
             'turkish': turkish_cv,
@@ -245,7 +245,7 @@ def function(firstname, language1, language2, gender):
 #start = timer()
 
 
-if st.button("Submit"): function(firstname, language1, language2, gender)
+if st.button("Submit"): phonnamematcher(firstname, language1, language2, gender)
 	
 
 
