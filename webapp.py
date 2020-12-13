@@ -61,16 +61,12 @@ def name_to_phenome_list(name1, all_phenomes):
     lookup_dict = {}
     for p in all_phenomes:
         if p in name1:
-            #
             # find the start indexes where this occurs 
             # just to get the ordering right
             #
             starts = [x.start() for x in re.finditer(p,name1)]
  
-            # remoev thise from the name so we don't repeat things we don't need
             # replace with blank spaces to keep length counts consistent
-            # WARNING: if '_' is a character in a phenome (idk if it is) this won't work
-            #          need to pick a new character
             name1 = name1.replace(p,'_'*len(p))
             
             for s in starts:
@@ -152,8 +148,6 @@ def phonnamematcher(firstname, language1, language2, gender):
     else: 
         dataframe = pd.concat([dataf, df4.reindex(dataf.index)], axis=1)
         for i in range(len(dataframe)): # loop over all rows
-                  # assuming this column contains an array / list of the phenomes
-                    # that is iterable:
             phenomes = dataframe.iloc[i]['new_new_column']
             for p in phenomes: 
                 dataframe.at[i,p] = 1  # set corresponding columns to 1    
