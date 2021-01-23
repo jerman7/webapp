@@ -55,14 +55,14 @@ df3.set_index('Name', inplace=True)
 #start = timer()
 
 
+##Create function that converts name to list of phoneme components
+
 @st.cache
 def name_to_phenome_list(name1, all_phenomes):
     all_phenomes = sorted(all_phenomes,key=len)[::-1] # sort longest to smallest
     lookup_dict = {}
     for p in all_phenomes:
         if p in name1:
-            # find the start indexes where this occurs 
-            # just to get the ordering right
             #
             starts = [x.start() for x in re.finditer(p,name1)]
  
@@ -86,6 +86,8 @@ def name_to_phenome_list(name1, all_phenomes):
 #start = timer()
 
 
+#Create an empty data frame with columns for all possible phoneme features  
+
 df4 = df3.reset_index()
 df4 = df4.drop(df4.columns[0], axis=1)
 df4 = df4.iloc[0:1]
@@ -96,7 +98,7 @@ df4 = df4.drop(columns=['new_column', 'new_new_column', 'Gender', 'Language'])
 
 
 
-
+#PhoneNameMatcher function
 
 def phonnamematcher(firstname, language1, language2, gender):
 
